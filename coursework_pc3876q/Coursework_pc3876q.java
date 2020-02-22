@@ -32,43 +32,42 @@ public class Coursework_pc3876q extends JFrame implements ActionListener {
     
     // Creating the String for the comboBoxes
     //------------------------------------------------------------------------------
-    String[] functionString = {"x-x^2", "ln(x+1)+1", "e^x-3x"};
-    String[] methodsString = {"Newton-Raphson", "Secant", "Bisection", "Steffensen"};
-    String[] decimalString = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-
-    Integer[] sIterations = {10, 20, 50, 100, 150, 200};
+    private static final String[] functionString = {"x-x^2", "ln(x+1)+1", "e^x-3x"};
+    private static final String[] methodsString = {"Newton-Raphson", "Secant", "Bisection", "Steffensen"};
+    private static final String[] decimalString = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+    private static final Integer[] sIterations = {10, 20, 50, 100, 150, 200};
 
     //------------------------------------------------------------------------------
-    Object[][] data = new Object[100][];
+    private static Object[][] data = new Object[100][];
 
-    JTable table;
+    private static JTable table;
 
-    String[] columnNames = {"Iteration", "x", "f(x)", "f'(x)"};
+    private static final String[] columnNames = {"Iteration", "x", "f(x)", "f'(x)"};
 
     //Creating the comboBoxes
     //------------------------------------------------------------------------------
-    JComboBox functionList = new JComboBox(functionString);
-    JComboBox methodsList = new JComboBox(methodsString);
-    JComboBox decimalList = new JComboBox(decimalString);
-    JComboBox<Integer> itList = new JComboBox<>(sIterations);
+    private static final JComboBox functionList = new JComboBox(functionString);
+    private static final JComboBox methodsList = new JComboBox(methodsString);
+    private static final JComboBox decimalList = new JComboBox(decimalString);
+    private static final JComboBox<Integer> itList = new JComboBox<>(sIterations);
 
     // Creating the TextFields for inputing the starting points
     //------------------------------------------------------------------------------
-    JTextField startPoint1 = new JTextField();
-    JTextField startPoint2 = new JTextField();
+    private static JTextField startPoint1 = new JTextField();
+    private static JTextField startPoint2 = new JTextField();
 
     // Creating the TextArea to display the results
     //------------------------------------------------------------------------------
-    JTextArea textArea = new JTextArea();
+    private static JTextArea textArea = new JTextArea();
 
-    IFunction f = null;
-    IFunction fPrime = null;
+    public IFunction f = null;
+    public IFunction fPrime = null;
 
-    Canvas canvas;
+    private static Canvas canvas;
 
-    double initialPoint1, initialPoint2;
+    private double initialPoint1, initialPoint2;
     
-    MyLinkedList list = new MyLinkedList();
+    public MyLinkedList list = new MyLinkedList();
 
     static int BN = 0;
     static Result bArray[] = new Result[500];
