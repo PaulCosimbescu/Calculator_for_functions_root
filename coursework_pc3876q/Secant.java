@@ -15,24 +15,25 @@ public class Secant {
     public static int SN = 0;
     public static Result sArray[] = new Result[500];
 
-    public static void addToSArray(Double x, Double f, Double fPrime) {
+    private static void addToSArray(Double x, Double f, Double fPrime) {
         Result result = new Result(x, f, fPrime);
         sArray[SN] = result;
         SN++;
     }
 
-    public static Double calculateDecimals(int n) {
+    private static Double calculateDecimals(int n) {
         double result = 1;
         for (int i = 0; i < n; i++) {
             result = result / 10;
         }
-        return new Double(result);
+        return result;
     }
 
-    public static Double Secant(double xold1, double xold2, Function f, int nrDecimals, int itMax) {
+    public static Double Secant(double xold1, double xold2, IFunction f, int nrDecimals, int itMax) {
         
         double xnew, fxold1, fxold2, diff;
         int iteration;
+        Double calculatedDecimals = calculateDecimals(nrDecimals);
 
         iteration = 0;
         SN = 0;
@@ -47,8 +48,8 @@ public class Secant {
             xold2 = xold1;
             xold1 = xnew;
 
-        } while (diff > calculateDecimals(nrDecimals).doubleValue() && iteration < itMax);
-        return new Double(xnew);
+        } while (diff > calculatedDecimals.doubleValue() && iteration < itMax);
+        return xnew;
     }
 
 }

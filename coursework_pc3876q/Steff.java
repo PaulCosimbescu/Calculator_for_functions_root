@@ -13,20 +13,21 @@ class Steff {
 
     public static MyLinkedList list = new MyLinkedList();
 
-    public static Double calculateDecimals(int n) {
+    private static Double calculateDecimals(int n) {
         
         double result = 1;
         for (int i = 0; i < n; i++) {
             result = result / 10;
         }
-        return new Double(result);
+        return result;
     }
 
-    public static double Steffensen(double x, Function f, int nrDecimals, int itMax) {
+    public static double Steffensen(double x, IFunction f, int nrDecimals, int itMax) {
         
         double gx;
         int iterations = 0;
         list.clear();
+        Double calculatedDecimals = calculateDecimals(nrDecimals);
         
         do {
  
@@ -36,7 +37,7 @@ class Steff {
             
             iterations++;
             
-        } while (Math.abs(gx) > 0 && Math.abs(gx) > calculateDecimals(nrDecimals) && iterations < itMax);
+        } while (Math.abs(gx) > 0 && Math.abs(gx) > calculatedDecimals.doubleValue() && iterations < itMax);
 
         return x;
 

@@ -50,7 +50,7 @@ public class Coursework_pc3876q extends JFrame implements ActionListener {
     JComboBox functionList = new JComboBox(functionString);
     JComboBox methodsList = new JComboBox(methodsString);
     JComboBox decimalList = new JComboBox(decimalString);
-    JComboBox<Integer> itList = new JComboBox<Integer>(sIterations);
+    JComboBox<Integer> itList = new JComboBox<>(sIterations);
 
     // Creating the TextFields for inputing the starting points
     //------------------------------------------------------------------------------
@@ -61,8 +61,8 @@ public class Coursework_pc3876q extends JFrame implements ActionListener {
     //------------------------------------------------------------------------------
     JTextArea textArea = new JTextArea();
 
-    Function f = null;
-    Function fPrime = null;
+    IFunction f = null;
+    IFunction fPrime = null;
 
     Canvas canvas;
 
@@ -322,9 +322,9 @@ public class Coursework_pc3876q extends JFrame implements ActionListener {
                     list.reset();
                     while ((r = list.get())!=null) {
                         data[i][0] = String.format("%d", (i + 1));
-                        data[i][1] = String.format("%." + decimals + "f", (double) (r.x.doubleValue()));
-                        data[i][2] = String.format("%." + decimals + "f", (double) (r.f.doubleValue()));
-                        data[i][3] = String.format("%." + decimals + "f", (double) (r.fPrime.doubleValue()));
+                        data[i][1] = String.format("%." + decimals + "f", (double) (r.getX().doubleValue()));
+                        data[i][2] = String.format("%." + decimals + "f", (double) (r.getF().doubleValue()));
+                        data[i][3] = String.format("%." + decimals + "f", (double) (r.getfPrime().doubleValue()));
                         i++;
                     }
 
@@ -352,8 +352,8 @@ public class Coursework_pc3876q extends JFrame implements ActionListener {
                     for (i = 0; i < SN; i++) {
 
                         data[i][0] = String.format("%d", (i + 1));
-                        data[i][1] = String.format("%." + decimals + "f", sArray[i].x);
-                        data[i][2] = String.format("%." + decimals + "f", sArray[i].f);
+                        data[i][1] = String.format("%." + decimals + "f", sArray[i].getX());
+                        data[i][2] = String.format("%." + decimals + "f", sArray[i].getF());
                         data[0][3] = String.format("Not Applicable");
 
                     }
@@ -371,8 +371,8 @@ public class Coursework_pc3876q extends JFrame implements ActionListener {
                     result = Bisection.Bisection(initialPoint1, initialPoint2, f, decimals, nrIterations);
                     
                     vresult[0] = result;
-                    BN = Bisection.BN;
-                    bArray = Bisection.bArray;
+                    BN = Bisection.getBN();
+                    bArray = Bisection.getbArray();
                     canvas.setXAsArray(bArray, BN);
 
                     data = new Object[BN][4];
@@ -380,8 +380,8 @@ public class Coursework_pc3876q extends JFrame implements ActionListener {
                     for (i = 0; i < BN; i++) {
 
                         data[i][0] = String.format("%d", (i + 1));
-                        data[i][1] = String.format("%." + decimals + "f", bArray[i].x);
-                        data[i][2] = String.format("%." + decimals + "f", bArray[i].f);
+                        data[i][1] = String.format("%." + decimals + "f", bArray[i].getX());
+                        data[i][2] = String.format("%." + decimals + "f", bArray[i].getF());
                         data[0][3] = String.format("Not Applicable");
 
                     }
@@ -409,8 +409,8 @@ public class Coursework_pc3876q extends JFrame implements ActionListener {
                     list.reset();
                     while ((r = list.get()) != null) {
                         data[i][0] = String.format("%d", (i + 1));
-                        data[i][1] = String.format("%." + decimals + "f", (double) (r.x.doubleValue()));
-                        data[i][2] = String.format("%." + decimals + "f", (double) (r.fPrime.doubleValue()));
+                        data[i][1] = String.format("%." + decimals + "f", (double) (r.getX().doubleValue()));
+                        data[i][2] = String.format("%." + decimals + "f", (double) (r.getfPrime().doubleValue()));
                         data[0][3] = String.format("Not Applicable");
                         i++;
                     }

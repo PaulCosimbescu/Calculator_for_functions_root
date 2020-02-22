@@ -27,7 +27,7 @@ public class MyLinkedList {
 
     public int size() {
         int s = 0;
-        if (head == null) {
+        if (this.head == null) {
             return 0;
         }
         item last_item = this.head;
@@ -45,7 +45,7 @@ public class MyLinkedList {
 
         if (this.head == null) {
             this.head = new_item;
-            cursor = this.head;
+            this.cursor = this.head;
         } else {
             item last_item = this.head;
             while (last_item.next != null) {

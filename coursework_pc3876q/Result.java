@@ -11,12 +11,26 @@ package coursework_pc3876q;
  */
 class Result {
 
+    private Double x;
+    private Double f;
+    private Double fPrime;
+
     public Result(Double x, Double f, Double fPrime) {
         this.x = x;
         this.f = f;
         this.fPrime = fPrime;
     }
-    public Double x;
-    public Double f;
-    public Double fPrime;
+
+    public Double getX() {
+        return x;
+    }
+
+    public Double getF() {
+        return f;
+    }
+
+    public Double getfPrime() {
+        return fPrime;
+    }
+
 }

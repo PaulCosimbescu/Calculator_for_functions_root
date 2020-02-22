@@ -12,27 +12,27 @@ package coursework_pc3876q;
 public class Bisection {
 
     // Array for Bisection, BN - number of elements
-    public static int BN = 0;
-    public static Result bArray[] = new Result[500];
+    private static int BN = 0;
+    private static Result bArray[] = new Result[500];
 
-    public static void addToBArray(Double x, Double f, Double fPrime) {
+    private static void addToBArray(Double x, Double f, Double fPrime) {
         Result result = new Result(x, f, fPrime);
         bArray[BN] = result;
         BN++;
     }
 
-    public static Double calculateDecimals(int n) {
+    private static Double calculateDecimals(int n) {
         double result = 1;
         for (int i = 0; i < n; i++) {
             result = result / 10;
         }
-        return new Double(result);
+        return result;
     }
 
-    public static Double Bisection(double xlower, double xupper, Function f, int nrDecimals, int itMax) {
+    public static Double Bisection(double xlower, double xupper, IFunction f, int nrDecimals, int itMax) {
 
         double xnew, fxlower, fxupper, fxnew, diff;
-
+        Double calculatedDecimals = calculateDecimals(nrDecimals);
         int iteration;
 
         fxlower = f.f(xlower);
@@ -61,9 +61,17 @@ public class Bisection {
                 xupper = xnew;
                 fxupper = fxnew;
             }
-        } while (diff > calculateDecimals(nrDecimals).doubleValue() && iteration < itMax);
+        } while (diff > calculatedDecimals.doubleValue() && iteration < itMax);
 
-        return new Double(xnew);
+        return xnew;
     }
 
+    public static int getBN() {
+        return BN;
+    }
+
+    public static Result[] getbArray() {
+        return bArray;
+    }
+    
 }

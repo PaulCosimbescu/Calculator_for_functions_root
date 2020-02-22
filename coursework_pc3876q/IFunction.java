@@ -9,7 +9,7 @@ package coursework_pc3876q;
  *
  * @author paul
  */
-public interface Function {
+public interface IFunction {
 
     public double f(double x);
 }
@@ -17,16 +17,18 @@ public interface Function {
 //------------------------------------------------------------------------------
 // first function to check
 
-class Function1 implements Function {
+class Function1 implements IFunction {
 
+    @Override
     public double f(double x) {
         return x - x * x;
     }
 }
 
 
-class Function2 implements Function {
-
+class Function2 implements IFunction {
+    
+    @Override
     public double f(double x) {
         
         return Math.log(x + 1) + 1;
@@ -35,8 +37,9 @@ class Function2 implements Function {
 }
 
 
-class Function3 implements Function {
+class Function3 implements IFunction {
 
+    @Override
     public double f(double x) {
         return Math.pow(Math.E, x) - 3 * x;
     }
@@ -45,24 +48,27 @@ class Function3 implements Function {
 
 //------------------------------------------------------------------------------
 
-class Function1Prime implements Function {
+class Function1Prime implements IFunction {
 
+    @Override
     public double f(double x) {
         return 1 - 2 * x;
     }
 }
 
 
-class Function2Prime implements Function {
+class Function2Prime implements IFunction {
 
+    @Override
     public double f(double x) {
         return 1 / (x + 1);
     }
 }
 
 
-class Function3Prime implements Function {
+class Function3Prime implements IFunction {
 
+    @Override
     public double f(double x) {
         return Math.pow(Math.E, x) - 3;
     }

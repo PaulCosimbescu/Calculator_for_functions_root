@@ -17,22 +17,23 @@ public class Newton_Raphson {
     // Calculates the error epsilon
     // Returns 0.0000..1 with number of 0 + 1 decimals 
     //------------------------------------------------------------------------------
-    public static Double calculateDecimals(int n) {
+    private static Double calculateDecimals(int n) {
         double result = 1;
         for (int i = 0; i < n; i++) {
             result = result / 10;
         }
-        return new Double(result);
+        return result;
     }
 
 
     //------------------------------------------------------------------------------
-    public static Double Newton_Raphson(double xold, Function f, Function fPrime,
+    public static Double Newton_Raphson(double xold, IFunction f, IFunction fPrime,
             int nrDecimals, int itMax) {
 
         
         double xnew, fxold, fdashxold, diff;
         int iteration;
+        Double calculatedDecimals = calculateDecimals(nrDecimals);
 
         iteration = 0;
 
@@ -48,8 +49,8 @@ public class Newton_Raphson {
             diff = Math.abs(xnew - xold);
             xold = xnew;
             
-        } while (diff > calculateDecimals(nrDecimals).doubleValue() && iteration < itMax);
+        } while (diff > calculatedDecimals.doubleValue() && iteration < itMax);
 
-        return new Double(xnew);
+        return xnew;
     }
 }

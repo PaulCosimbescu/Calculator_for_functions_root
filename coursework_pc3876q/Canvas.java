@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -24,11 +25,11 @@ public class Canvas extends JPanel {
     boolean isList;
     double x1,x2;
     // f is the first function to draw the chart
-    Function f;
+    IFunction f;
     // fp is the second function to draw the chart
-    Function fp;
+    IFunction fp;
 
-    LinkedList<Double> X = new LinkedList<Double>();
+    List<Double> X = new LinkedList<>();
     // method to pass the function from outside
     // the Canvas class
     
@@ -36,13 +37,13 @@ public class Canvas extends JPanel {
     	this.x1 = x1;
     	this.x2 = x2;
     }
-    public void setFunction(Function f) {
+    public void setFunction(IFunction f) {
         this.f = f;
     }
     // method to pass the function from outside
     // the Canvas class
 
-    public void setFunctionPrime(Function f) {
+    public void setFunctionPrime(IFunction f) {
         this.fp = f;
     }
 
@@ -51,14 +52,14 @@ public class Canvas extends JPanel {
         X.reset();
         Result r;
         while ((r = X.get())!=null) {
-            this.X.add(new Double(r.x));
+            this.X.add(r.getX());
         }
     }
 
     public void setXAsArray(Result X[], int N) {
         this.X.clear();
         for (int i = 0; i < N; i++) {
-            this.X.add(X[i].x);
+            this.X.add(X[i].getX());
         }
         isList = false;
     }
